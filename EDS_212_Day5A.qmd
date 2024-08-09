@@ -1,0 +1,67 @@
+---
+title: "EDS 212 Day5 A - Morning Session"
+author: "Nicole Pepper"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console'
+execute:
+  
+  warning: false
+---
+
+Quarto Practice
+
+```{r}
+#| message: false
+
+# Load libraries
+library(tidyverse)
+
+```
+
+```{r}
+#| include: false
+# Explore your data
+head(starwars)
+tail(starwars)
+dim(starwars)
+
+
+```
+
+Create a ggplot(scatter plot) of character mass (y) and charter height (x), update color based on value of mass,
+
+```{r}
+#| warning: false
+#| echo: false
+ggplot(data=starwars, aes(x=height, y=mass)) +
+  geom_point(aes(color = mass))+ 
+  labs(title="Title",
+       x="Height (cm)",
+       y="Mass (kg)")
+```
+
+Histogram of Character Heights
+
+```{r}
+#| echo: false
+#| fig-cap: "This is my figure caption"
+#| fig-alt: "This is my alt text"
+ggplot(data=starwars, aes(x=height)) +
+geom_histogram( color="orange", fill="purple")+
+  labs(title="Title",
+       x="Heights (cm)",
+       y="Number of Characters")
+
+```
+
+`df$col_name`
+
+```{r}
+sw_height_mean <- round(mean(starwars$height, na.rm = TRUE), digits = 3)
+sw_height_mean
+
+```
+
+The mean height of all starwars characters is `r sw_height_mean`
